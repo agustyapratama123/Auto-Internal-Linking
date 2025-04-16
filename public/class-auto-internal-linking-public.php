@@ -54,6 +54,14 @@ class Auto_Internal_Linking_Public {
 
 	}
 
+	public function process_content_links( $content ) {  
+        if ( is_singular( 'post' ) ) {  
+            $processor = new Codewpx_Link_Processor();  
+            $content = $processor->find_and_replace_links( $content );  
+        }  
+        return $content;  
+    }  
+
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *

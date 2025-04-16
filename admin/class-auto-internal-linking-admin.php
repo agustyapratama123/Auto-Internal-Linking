@@ -54,6 +54,21 @@ class Auto_Internal_Linking_Admin {
 
 	}
 
+	public function add_admin_menu() {  
+        add_menu_page(  
+            'Auto Internal Linking',  
+            'Internal Linking',  
+            'manage_options',  
+            'codewpx-auto-internal-linking',  
+            array( $this, 'display_admin_page' ),  
+            'dashicons-admin-links'  
+        );  
+    }  
+
+    public function display_admin_page() {  
+        include_once CODEWPX_AIL_PLUGIN_DIR . 'admin/partials/codewpx-auto-internal-linking-admin-display.php';  
+    }  
+
 	/**
 	 * Register the stylesheets for the admin area.
 	 *

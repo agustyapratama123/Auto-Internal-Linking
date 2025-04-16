@@ -40,6 +40,15 @@ define( 'CODEWPX_AIL_VERSION', '1.0.0' );
 define( 'CODEWPX_AIL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );  
 define( 'CODEWPX_AIL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );  
 
+// Autoloader
+spl_autoload_register(function($class) {
+    if (strpos($class, 'Codewpx_AIL_') === 0) {
+        $file = CODEWPX_AIL_PATH . 'includes/' . str_replace(['Codewpx_AIL_', '_'], ['', '/'], $class) . '.php';
+        if (file_exists($file)) require $file;
+    }
+});
+
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-auto-internal-linking-activator.php
